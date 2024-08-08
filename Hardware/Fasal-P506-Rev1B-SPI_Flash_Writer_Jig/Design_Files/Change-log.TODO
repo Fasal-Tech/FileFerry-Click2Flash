@@ -1,0 +1,11 @@
+Requirements:
+
+
+===============================================
+DONE
+===============================================
+
+> Avoid PB3, PB4 and PA15. PB3 is still ok.
+> Remove transistor drive of RGB LED and use GPIO directly
+> Add slide switch for BOOT0 to toggle between high and low
+> Change LSE 32768 XTAL footprint to ABS07 instead of ABS09
