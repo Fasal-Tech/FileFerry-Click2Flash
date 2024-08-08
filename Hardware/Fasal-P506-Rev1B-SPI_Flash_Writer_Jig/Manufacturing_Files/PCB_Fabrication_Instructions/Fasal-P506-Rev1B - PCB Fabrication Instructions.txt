@@ -1,5 +1,5 @@
 ===========================================================
-PCB Name: Fasal-P506-Rev1A
+PCB Name: Fasal-P506-Rev1B
 Customer: Wolkus Technology Solutions Private Limited
 ===========================================================
 ===========================================================
@@ -22,8 +22,8 @@ PCB Test Report:	Yes
 ===========================================================	
 (B) PCB Technical details	
 ===========================================================
-layers: 		4
-Stackup:		JLC7628 (jlcpcb.com)	
+layers: 		2
+Stackup:		N/A	
 minimum trace width: 	>=10 mil	
 minimum trace spacing: 	>=10 mil	
 minimum drill size: 	0.25 mm	
