@@ -1,0 +1,30 @@
+/**
+ * @file PushButton.h
+ * @author Vishal Keshava Murthy
+ * @brief Push Button Interface
+ * @version 0.1
+ * @date 2024-04-04
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
+
+///////////////////////////////////////////////////////////////////////////////
+
+#ifndef APPCOMMON_PUSHBUTTON_PUSHBUTTON_H_
+#define APPCOMMON_PUSHBUTTON_PUSHBUTTON_H_
+
+///////////////////////////////////////////////////////////////////////////////
+
+#include <stdint.h>
+#include <stdbool.h>
+#include "gpio.h"
+#include "AppConfiguration.h"
+
+///////////////////////////////////////////////////////////////////////////////
+
+bool PushButton_IsFlashButtonPressed();
+
+///////////////////////////////////////////////////////////////////////////////
+
+#endif /* APPCOMMON_PUSHBUTTON_PUSHBUTTON_H_ */
