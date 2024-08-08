@@ -5,7 +5,7 @@ A handheld PCB designed for easy factory programming of your IoT product. Transf
 Repository Contents
 -------------------
 * **/Hardware** - All Eagle design files (.brd, .sch)
-* * **/Firmware** - Firmware that comes pre-installed on the Logomatic
+* **/Firmware** - Firmware that comes pre-installed on the Logomatic
 * **/Manufacturing** - All manufacturing files including Gerber, BOM, PnP_XY, and prototype manufacturing files that can be used to order directly from JLCPCB wit PCBA.
 
 License Information
