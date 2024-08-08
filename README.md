@@ -10,7 +10,7 @@ Repository Contents
 
 License Information
 -------------------
-The hardware is released under [MIT License]([https://creativecommons.org/licenses/by-sa/4.0/](https://opensource.org/license/mit)).
+The hardware and firmware are released under [MIT License]([https://creativecommons.org/licenses/by-sa/4.0/](https://opensource.org/license/mit)).
 The code is beerware; if you see me (or any other Fasal employee) at the local, and you've found our code helpful, please buy us a round!
 
 Distributed as-is; no warranty is given.
