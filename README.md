@@ -34,6 +34,16 @@ This is where FileFerry-Click2Flash comes in! 🎉 It addresses the gap between 
 
 With its customizable connector interface and portable design, this tool simplifies the flashing process, reducing both the time and costs associated with traditional methods. FileFerry-Click2Flash is the modern solution to the challenges faced in programming SPI flash ICs, ensuring that the process is as seamless and efficient as possible. 🖊️💡
 
+
+Manufacturing Cost
+------------------
+We got 5 quantity PCBA samples from JLCPCB. (We are in no way affiliated with JLCPCB. It's just convinient to manufacture quick prototypes with them!)
+1. Total cost with Shipping (PCB + PCBA): $132.49
+2. Landing cost with import duties, customs, etc: INR 14,000.00 (for 5 pieces)
+3. Cost per board: INR 2,800.00 (6 qty pogo pins extra. hand soldered later)
+
+At a cost of INR 2,800.00 (~ USD 33.00), we have a SPI flasher with other functionalities like UART transfer. Compare this with a J-Flash SPI programmer at ~ USD 330.00 or a Bed of nails test jig at ~ USD 500.00. Which would you choose?
+
 High Level Working
 ------------------
 Let's look at how this works.
