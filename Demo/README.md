@@ -16,42 +16,50 @@ This document demonstrates how FileFerry-click2Flash can be used for your projec
 
 ## Release Contents overview
 
-The prebuilt binaries released are available under the release folder @ref Firmware/Releases/ is comprised of
+The prebuilt binaries released are available under the release folder @ref /Firmware/Releases is comprised of
 
 1. APP: Application Binaries
-    a. BUILD_DEBUG: Debug Build with all debug symbols and messages enabled for debugging purposes
-    b. BUILD_PROD:  Production build optimized for performance. Meant for use on the production floor
+    1. BUILD_DEBUG: Debug Build with all debug symbols and messages enabled for debugging purposes
+    2. BUILD_PROD:  Production build optimized for performance. Meant for use on the production floor
 2. FasalFlasher_ReleaseNote.pdf: Release Note with details about the build and usage
 3. ReadMe.txt: Instructional text document that captures essential Release information
 
 ## Setup
 
-The following steps are to be followed with a fresh flasher device
+The following steps are to be followed with a new FileFerry-Click2Flash device
 
 ### Software and tools used
 
 1. [ST Cube Programmer](https://www.st.com/en/development-tools/stm32cubeprog.html) : To upload binaries to device
 2. [TeraTerm](https://teratermproject.github.io/index-en.html) : Or equivalent serial monitor tool with XModem protocol
 
-### External device setup
+### External device (Target) setup
 
-1. The external device whose storage needs to be updated needs to be empty prior to usage with Fasal Flasher. This can be done by erasing the program flash of the external device through cubeProgrammer
+1. The external device (Target) needs to be empty prior to usage with Fasal Flasher. If a program is running on it, it will interfere with the flashing operation.
+2. You can put the device in "suspend" mode. (Example: Use BOOT0 if the target has a STM32 MCU to halt program execution).
+3. Alternately, erase the MCU's (or MPU's) internal Flash program.
 
-### Fasal Flasher device SD-Card SetUp
+### FileFerry-Click2Flash device SD-Card SetUp
 
-1. Copy the Golden Image file Fallback.txt into an SD-card and insert the same into the Fasal Flasher device. Please note that that any file that needs to be transferred must be named Fallback.txt for the file to be recognized by the Fasal flasher
+1. The precompiled binary of the FileFerry-Click2Flash expects a file name "Fallback.txt" in the SD Card to be present. This "Fallback.txt" gets transferred to the Target SPI Flash.
+2. Note: ".txt" is just a file format notation and not an actual text file. The file in the demo is a ".srec" compiled binary that can be used to perform DFU of a target STM32 MCU. The .srec compiled binary is renamed as "Fallback.txt".
+3. Copy the file "Fallback.txt" into an SD-card and insert the same into the FileFerry-Click2Flash device. Please note that that any file that needs to be transferred must be named Fallback.txt for the file to be recognized by the FileFerry-Click2Flash.
+4. You may change the file name expected by the FileFerry-Click2Flash, recompile the code and upload the new code to the FileFerry-Click2Flash device. You can then rename the SD card file accordingly.
 
-### Application Setup
+### Burning the Application code to a fresh FileFerry-Click2Flash PCB
 
-1. Connect Fasal Flasher device using the programming + log cable using ST cube Programmer. Ensure that a functioning SD-Card with is installed in the device 
-2. Erase the complete device using Full chip erase option under Erasing and programming section in the side-Menu
-3. Select & load application file *App/PROD/FasalFlasher_Vx_y_PROD.srec* to device
+1. Insert the above SD card (with the "fallback.txt" file in it).
+2. Connect a Type-C USB and slide the power switch to power on the device.
+3. Connect a STLink V3 minie on the programming header.
+4. Open the STM32cube Programmer.
+5. First, erase the complete device using Full chip erase option under Erasing and programming section in the side-Menu
+6. Select & load application file *App/PROD/FasalFlasher_Vx_y_PROD.srec* to device
 
 ![Full chip erase & Flash program](../Assets/images/CubeProgrammer.png)
 
-## Usage Instructions
+## Using the FileFerry-Click2Flash device
 
-1. Ensure that the device is powered over USB and the power switch is set to on Condition, and that the set up is complete as instructed in the application setup 
+1. Ensure that the device is powered over USB and the power switch is ON, and that the set up is complete as instructed in the application setup 
 2. The operation mode can be selected as either SD-Card mode or XModem mode though the slide switch. The two modes are described below 
 3. Ensure that the device whose Flash needs to be programmed is not running any application. Disconnect the power source for the external board and connect to the flash SPI interface using the Pogo interface
 4. The application state will be indicated in accordance with []
@@ -124,7 +132,7 @@ The application also supporters error codes to indicate specific error condition
 |0x8000      | eERR_SLEEP_FAILURE           |
 
 ## Build-Instruction
-
+If you want to modify the firmware functionality, you can re-build the code for the FileFerry-Click2Flash device using these steps:
 1. Built using CubeIDE Version: 1.15.1 Build: 21094_20240412_1041 (UTC)
 2. Both BUILD_DEBUG and BUILD_PROD Uses Linker script STM32f103RETX_FLASH.ld with flash offset of 0x0800 0000, application size set to 512KB
 3. The following build configurations are built into the codebase

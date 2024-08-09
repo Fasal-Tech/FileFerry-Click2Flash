@@ -16,15 +16,16 @@ The "FileFerry-Click2Flash" PCB with the pogo pins.
 
 ## 📁 Repository Contents
 
-* */Hardware 🛠️*
+* **/Hardware 🛠️**
   * All Eagle design files (.brd, .sch)
-* */Firmware 💻*
-  * Firmware that comes pre-installed on the FileFerry
-* */Manufacturing 🏭*
+* **/Firmware 💻**
+  * Pre-compiled binaries to flash the board
+  * Firmware source code (STM32Cube IDE, HAL) that you can use to modify the functionality
+* **/Manufacturing 🏭**
   * All manufacturing files, including Gerber, BOM, PnP_XY, and prototype manufacturing files (Order BOM and PnP) that can be used to order directly from JLCPCB for a complete PCBA job.
-* */Assets 📸*
+* **/Assets 📸**
   * GitHub assets like images and other resources
-* */Demo 📸*
+* **/Demo 📸**
   * Demonstration resources to compile the firmware, flash it to the "FileFerry-Click2Flash" board and use it.
 
 ## 🔍 What is FileFerry-Click2Flash?
@@ -102,13 +103,14 @@ The "FileFerry-Click2Flash" PCB points
   ![Teraterm file selection](/Assets/images/teraterm_4_transfer.png)
   File Transfer
 
-## What type of Files can I transfer?
 
+## What type of Files can I transfer?
 The sky is the limit really. Some common examples are:
 
 1. Transferring the production "Golden Image" of the product where the end product's bootloader performs a DFU from the binaries available in the Flash IC. (You can extend this for implementing OTA).
 2. Transferring unique device CA certificates from a PC based on the device serial number. (Scan barcode, generate unique CA certificate in the PC application, transfer it to the device over USB UART).
 3. Transferring audio files, JSON configuration files, etc.
+
 
 ## Can I modify the hardware?
 
@@ -116,15 +118,15 @@ You have the design files with you. You can do anything! If you are a student or
 
 1. Use as a STM32F103 development kit
 2. Use it as a data-logger. Examples:
-3. Connect an I2C sensor (there is a QWIIC port as well as a JST port with controlled power) and modify the STM32 code to read from the sensor and store it in the onboard SD card.
-4. You can connect a SPI sensor as well.
-5. Use the additional UART2 port to connect a GPS receiver and modify the STM32 code to receive the GPS NMEA strings, parse it and store it in the onboard SD card.
-6. RFID access control anyone? Interface a RFID reader over UART/I2C/SPI (RC522 or PN532 or similar), have a master list of RFID numbers stored in the SD card. Connect a relay to a free GPIO and give access control to the room.
+   * Connect an I2C sensor (there is a QWIIC port for easy connection. There is also a JST port with controlled power) and modify the STM32 code to read from the sensor and store it in the onboard SD card.
+   * You can connect a SPI sensor as well.
+3. Use the additional UART2 port to connect a GPS receiver and modify the STM32 code to receive the GPS NMEA strings, parse it and store it in the onboard SD card.
+4. RFID access control anyone? Interface a RFID reader over UART/I2C/SPI (RC522 or PN532 or similar), have a master list of RFID numbers stored in the SD card. Connect a relay to a free GPIO and give access control to the room.
 
 Limitless possibilities!
 
-## 📜 License Information
 
+## 📜 License Information
 The hardware and firmware are released under the MIT License. 📝 The code is beerware; if you see me (or any other Fasal employee) at the local, and you've found our code helpful, please buy us a round! 🍻
 
 Distributed as-is; no warranty is given. ⚠️ Read the License file for complete licensing information.
