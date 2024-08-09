@@ -102,13 +102,14 @@ The "FileFerry-Click2Flash" PCB points
   ![Teraterm file selection](/Assets/images/teraterm_4_transfer.png)
   File Transfer
 
+
 ## What type of Files can I transfer?
-----------------------------------------
 The sky is the limit really. Some common examples are:
 
 1. Transferring the production "Golden Image" of the product where the end product's bootloader performs a DFU from the binaries available in the Flash IC. (You can extend this for implementing OTA).
 2. Transferring unique device CA certificates from a PC based on the device serial number. (Scan barcode, generate unique CA certificate in the PC application, transfer it to the device over USB UART).
 3. Transferring audio files, JSON configuration files, etc.
+
 
 ## Can I modify the hardware?
 
@@ -123,9 +124,8 @@ You have the design files with you. You can do anything! If you are a student or
 
 Limitless possibilities!
 
-## 📜 License Information
---------------------------------
 
+## 📜 License Information
 The hardware and firmware are released under the MIT License. 📝 The code is beerware; if you see me (or any other Fasal employee) at the local, and you've found our code helpful, please buy us a round! 🍻
 
 Distributed as-is; no warranty is given. ⚠️ Read the License file for complete licensing information.
