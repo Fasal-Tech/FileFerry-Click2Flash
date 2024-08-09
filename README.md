@@ -1,6 +1,6 @@
 🚀 FileFerry-Click2Flash
 ==========================
-#### A handheld PCB designed for easy factory programming of your IoT product. 🌐 Transfer files, binary images, security credentials, or certificates from an SD card or from a Serial terminal over USB to a target SPI flash IC with just a click of a button. 🎯
+#### A compact and portable tool designed for easy factory programming of your IoT product. 🌐 Transfer files, binary images, security credentials, or certificates from an SD card or from a Serial terminal over USB to a target SPI flash IC with just a click of a button. 🎯
 #### This repository contains all the necessary files to manufacture your own samples from JLCPCB (or a vendor of your choice) and start using it right away. 
 #### The included firmware source code and compiled binaries can be used right out of the box! 🛠️ You can also modify the design and code and build your own custom product. ✨
 
@@ -50,10 +50,11 @@ With its customizable connector interface and portable design, this tool simplif
 ------------------
 We got 5 quantity PCBA samples from JLCPCB. (We are in no way affiliated with JLCPCB—it's just convenient to manufacture quick prototypes with them!) 🚀
 
-Total cost with Shipping (PCB + PCBA): $132.49 📦
-Landing cost with import duties, customs, etc.: INR 14,000.00 (for 5 pieces) 💸
-Cost per board: INR 2,800.00 (includes 6 extra pogo pins, hand soldered later) 🛠️
-At a cost of INR 2,800.00 (~ USD 33.00), we have a SPI flasher with additional functionalities like UART transfer.
+* Total cost with Shipping (PCB + PCBA): $132.49 📦
+* Landing cost with import duties, customs, etc.: INR 14,000.00 (for 5 pieces) 💸
+* Cost per board: INR 2,800.00 (includes 6 extra pogo pins, hand soldered later) 🛠️
+* At a cost of INR 2,800.00 (~ USD 33.00), we have a SPI flasher with additional functionalities like UART transfer.
+  
 🔄 Compare this with a J-Flash SPI programmer at ~ USD 330.00 or a Bed of nails test jig at ~ USD 500.00.
 🤔 Which would you choose?
 
