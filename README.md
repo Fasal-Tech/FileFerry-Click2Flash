@@ -16,15 +16,16 @@ The "FileFerry-Click2Flash" PCB with the pogo pins.
 
 ## 📁 Repository Contents
 
-* */Hardware 🛠️*
+* **/Hardware 🛠️**
   * All Eagle design files (.brd, .sch)
-* */Firmware 💻*
-  * Firmware that comes pre-installed on the FileFerry
-* */Manufacturing 🏭*
+* **/Firmware 💻**
+  * Pre-compiled binaries to flash the board
+  * Firmware source code (STM32Cube IDE, HAL) that you can use to modify the functionality
+* **/Manufacturing 🏭**
   * All manufacturing files, including Gerber, BOM, PnP_XY, and prototype manufacturing files (Order BOM and PnP) that can be used to order directly from JLCPCB for a complete PCBA job.
-* */Assets 📸*
+* **/Assets 📸**
   * GitHub assets like images and other resources
-* */Demo 📸*
+* **/Demo 📸**
   * Demonstration resources to compile the firmware, flash it to the "FileFerry-Click2Flash" board and use it.
 
 ## 🔍 What is FileFerry-Click2Flash?
