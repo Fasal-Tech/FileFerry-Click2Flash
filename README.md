@@ -6,7 +6,7 @@ Repository Contents
 -------------------
 * **/Hardware** - All Eagle design files (.brd, .sch)
 * **/Firmware** - Firmware that comes pre-installed on the FileFerry
-* **/Manufacturing** - All manufacturing files including Gerber, BOM, PnP_XY, and prototype manufacturing files that can be used to order directly from JLCPCB wit PCBA.
+* **/Manufacturing** - All manufacturing files including Gerber, BOM, PnP_XY, and prototype manufacturing files (Order BOM and PnP) that can be used to order directly from JLCPCB for a complete PCBA job.
 
 License Information
 -------------------
