@@ -1,6 +1,6 @@
 FileFerry-Click2Flash
 ========================================
-A handheld PCB designed for easy factory programming of your IoT product. Transfer files, binary images, security credentials, or certificates from an SD card to a target SPI flash IC or UART system at the click of a button. This repo contains all necessary files to build your own product.
+A handheld PCB designed for easy factory programming of your IoT product. Transfer files, binary images, security credentials, or certificates from an SD card to a target SPI flash IC or UART system at the click of a button. This repo contains all necessary files to manufacture your own samples from JLCPCB (or a vendor of your choice) and use this off the bat. You can also modify the design and build your own product.
 
 
 Product Image
@@ -45,8 +45,37 @@ The "FileFerry-Click2Flash" system block diagram.
 The "FileFerry-Click2Flash" PCB points
 
 There are two ways (currently supported) to transfer files to the target SPI Flash
-a. Using the onboard micro SD card (Files need to be on the SD card)
-b. Using a PC client over USB (you will need a Software client to initiate transfer)
+# 1. Using the onboard micro SD card (Files need to be on the SD card)
+a. Simple copy the file you want to transfer to the external SPI Flash into the SD card (Example a production binary)
+b. Modify the given source code to use the file name and build the code
+c. Flash the code to the "FileFerry-Click2Flash" board
+d. Insert the SD Card, power up the board and click the "Flash" button for the flashing to take place
+e. you can monitor the progress on the RGB LED as well as debug logs on the USB-UART
+
+# 2. Using a PC client over USB (you will need a Software client to initiate transfer)
+a. No re-programming needed.
+b. Slide the "Mode Switch" S302 to "Mode 1". This will activate UART X-Modem transfer. (Current firmware supports X-modem. Can be modified to any thing else).
+c. Open a terminal program of your choice. The termainal program has to support "File Transfer" functionality.
+d. We use TeraTerm. So open TeraTerm.
+e. Connect to the proper COM port. Use BAud as 115200,8N1.
+
+![Teraterm Window](/Assets/images/teraterm_1_port.png)
+Teraterm
+
+f. Go to File-> Transfer -> XMODEM -> Send -> [Check Option 1K] + Select file.
+
+![Teraterm file selection](/Assets/images/teraterm_2_xmodem.png)
+File Selection
+
+g. Select your file and click "Open".
+
+![Teraterm file selection](/Assets/images/teraterm_3_file-select.png)
+File Selection
+
+h. The file transfer will start.
+
+![Teraterm file selection](/Assets/images/teraterm_4_transfer.png)
+File Transfer
 
 License Information
 -------------------
