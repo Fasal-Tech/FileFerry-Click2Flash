@@ -22,8 +22,9 @@ PCB Test Report:	Yes
 ===========================================================	
 (B) PCB Technical details	
 ===========================================================
-layers: 		2
-Stackup:		N/A	
+layers: 		4
+controlled Impedance	Yes
+Stackup:		JLC7628 Stackup	
 minimum trace width: 	>=10 mil	
 minimum trace spacing: 	>=10 mil	
 minimum drill size: 	0.25 mm	

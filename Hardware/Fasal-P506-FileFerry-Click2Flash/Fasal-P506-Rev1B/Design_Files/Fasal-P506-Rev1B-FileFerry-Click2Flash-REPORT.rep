@@ -1,0 +1,538 @@
+Data Exported from: F:/Fasal_Github_OS/FileFerry-Click2Flash/Hardware/Fasal-P506-FileFerry-Click2Flash/Fasal-P506-Rev1B/Design_Files/Fasal-P506-Rev1B-FileFerry-Click2Flash.brd
+with: c:/EAGLE 9.6.2/examples/ulps/examples/statistic-brd.ulp Version 1.3.9
+at: 09-08-2024 12:59 PM
+EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
+
+all Values in mm
+max. Board length (Layer 20)
+X = 140.00
+Y = 40.00
+Outline contour = 354.85
+
+used layers 4
+
+ 1 Top
+ 2 Route2
+15 Route15
+16 Bottom
+_________________________
+
+987   	 Wire(s) incl. Arc(s)
+4     	 Polygon(s)
+_________________________
+315   	 SMD(s) top
+18    	 SMD(s) bottom
+===================
+333   	 SMD(s) total
+
+46    	 PAD(s)
+_________________________
+188   	 Via
+14    	 Hole
+===================
+248   	 Drills total
+_________________________
+315	 tCream
+18	 bCream
+_________________________
+Routing Info: 
+79    	 Signal(s) 
+379   	 PAD/SMD total
+===================
+327   	 PAD/SMD on Signal
+_________________________
+Packages used area:
+~ 2714.53 mm² (0.271 dm²)
+_________________________
+
+
+============================
+
+============================
+96 Elements: 0 locked / 96 unlocked
+7 Testpoints (TP)
+
+----------------------------
+LAYER
+Nb.	Name	Used
+  1	Top	1
+  2	Route2	1
+  3	Route3	0
+  4	Route4	0
+  5	Route5	0
+  6	Route6	0
+  7	Route7	0
+  8	Route8	0
+  9	Route9	0
+ 10	Route10	0
+ 11	Route11	0
+ 12	Route12	0
+ 13	Route13	0
+ 14	Route14	0
+ 15	Route15	1
+ 16	Bottom	1
+ 17	Pads	1
+ 18	Vias	1
+ 19	Unrouted	0
+ 20	Dimension	1
+ 21	tPlace	1
+ 22	bPlace	1
+ 23	tOrigins	1
+ 24	bOrigins	1
+ 25	tNames	1
+ 26	bNames	0
+ 27	tValues	1
+ 28	bValues	1
+ 29	tStop	1
+ 30	bStop	1
+ 31	tCream	1
+ 32	bCream	1
+ 33	tFinish	0
+ 34	bFinish	0
+ 35	tGlue	1
+ 36	bGlue	0
+ 37	tTest	1
+ 38	bTest	0
+ 39	tKeepout	1
+ 40	bKeepout	0
+ 41	tRestrict	1
+ 42	bRestrict	1
+ 43	vRestrict	0
+ 44	Drills	1
+ 45	Holes	1
+ 46	Milling	1
+ 47	Measures	0
+ 48	Document	0
+ 49	Reference	0
+ 50	dxf	0
+ 51	tDocu	1
+ 52	bDocu	1
+ 53	tGND_GNDA	0
+ 54	bGND_GNDA	0
+ 56	wert	0
+ 57	tCAD	0
+ 58	bCAD	0
+ 59	tCarbon	0
+ 60	bCarbon	0
+ 61	stand	0
+100	Release	0
+101	Heatsink	0
+102	tMarkings	0
+103	bMarkings	0
+104	Name	0
+105	tPlate	0
+106	bPlate	0
+107	Crop	0
+108	tBridges	0
+109	tBPL	0
+110	bBPL	0
+111	tGTest	0
+112	bGTest	0
+113	ReferenceLS	0
+114	Badge_Outline	0
+115	ReferenceISLANDS	0
+116	Patch_BOT	0
+117	mPads	0
+118	mVias	0
+119	mUnrouted	0
+120	mDimension	0
+121	_layer121	0
+122	_bplace	0
+123	mtOrigins	0
+124	mbOrigins	0
+125	mtNames	0
+126	mbNames	0
+127	mtValues	0
+128	mbValues	0
+129	mtStop	0
+130	mbStop	0
+131	mtCream	0
+132	mbCream	0
+133	mtFinish	0
+134	mbFinish	0
+135	mtGlue	0
+136	mbGlue	0
+137	mtTest	0
+138	mbTest	0
+139	mtKeepout	0
+140	mbKeepout	0
+141	mtRestrict	0
+142	mbRestrict	0
+143	mvRestrict	0
+144	mDrills	0
+145	mHoles	0
+146	mMilling	0
+147	mMeasures	0
+148	mDocument	0
+149	mReference	0
+150	References	0
+151	HeatSink	0
+152	mbDocu	0
+153	FabDoc1	0
+154	FabDoc2	0
+155	FabDoc3	0
+160	O_Dim	0
+166	AntennaArea	0
+168	4mmHeightArea	0
+191	mNets	0
+192	mBusses	0
+193	mPins	0
+194	mSymbols	0
+195	mNames	0
+196	mValues	0
+199	EXTD_ERC	0
+200	200bmp	0
+201	201bmp	0
+202	202bmp	0
+203	203bmp	0
+204	204bmp	0
+205	205bmp	0
+206	206bmp	0
+207	207bmp	0
+208	208bmp	0
+209	209bmp	0
+210	210bmp	0
+211	211bmp	0
+212	212bmp	0
+213	213bmp	0
+214	214bmp	0
+215	215bmp	0
+216	SMD16	0
+217	217bmp	0
+218	218bmp	0
+219	219bmp	0
+220	220bmp	0
+221	221bmp	0
+222	222bmp	0
+223	223bmp	0
+224	224bmp	0
+225	225bmp	0
+226	226bmp	0
+227	227bmp	0
+228	228bmp	0
+229	229bmp	0
+230	230bmp	0
+231	Eagle3D_PG1	0
+232	Eagle3D_PG2	0
+233	Eagle3D_PG3	0
+248	Housing	0
+249	Edge	0
+250	Descript	0
+251	SMDround	0
+253	Extra	0
+254	OrgLBR	0
+255	PART	0
+
+----------------------------
+CLASS
+# 	Name	min. Width	Clearance	min. Drill	Used
+0	default	0.0000 	0.0000 	0.0000 	77  
+1	diff pairs	0.1000 	0.3000 	0.0000 	2   
+
+----------------------------
+WIDTH
+WIRE	Q.
+0.2540 	687 
+0.4064 	229 
+0.6096 	39  
+0.5080 	6   
+0.2000 	26  
+
+ARC	Q.
+ * Wire width are saved in 0.2 micron resolution.
+
+POLY. width	Q.
+0.2540 	2   
+0.1524 	2   
+
+POLY. Isol.	Q.
+0.6096 	4   
+
+Polygon
+Type	Name	Layer	Rank	Width
+Signal	GND	1	1	0.254
+Signal	GND	16	1	0.254
+Signal	GND	2	1	0.152
+Signal	GND	15	1	0.152
+ * Wire width are saved in 0.2 micron resolution.
+
+----------------------------
+CIRCLE (width)	Q.
+1.0160 	8   
+
+CIRCLE diam.	Q.
+4.4045 	8   
+
+----------------------------
+TEXT (w)	Q.
+0.2032 	1   
+0.3556 	1   
+
+TEXT (s)	Q.
+1.4224 	1   
+1.7780 	1   
+
+----------------------------
+SMD x	SMD y	Roundn.	Q.
+1.0500 	1.0800 	0%	38  
+1.1000 	0.5000 	0%	4   
+1.0000 	0.7000 	0%	1   
+0.7000 	0.6000 	0%	3   
+1.0750 	0.5000 	0%	4   
+1.8000 	1.0000 	0%	2   
+1.2500 	0.6500 	0%	10  
+0.6000 	1.5500 	0%	4   
+1.2000 	2.0000 	0%	2   
+2.4000 	0.7600 	0%	14  
+1.5000 	0.8000 	0%	16  
+2.0000 	1.4500 	0%	8   
+0.6000 	1.1400 	0%	4   
+0.3000 	1.1400 	0%	8   
+0.8000 	0.8000 	0%	4   
+2.8000 	1.0000 	0%	6   
+1.5000 	6.0000 	0%	6   
+1.0000 	1.1000 	0%	72  
+1.5000 	0.7000 	0%	9   
+1.0000 	0.8000 	0%	12  
+2.6000 	1.8000 	0%	2   
+1.2700 	1.2700 	100%	5   
+1.4750 	0.3000 	0%	64  
+1.0000 	0.3000 	0%	28  
+3.3500 	3.3500 	0%	1   
+1.9000 	1.1000 	0%	2   
+1.8000 	1.2000 	0%	4   
+
+PAD tDiam	Q.
+1.8796 	15  
+1.0500 	2   
+0.9000 	2   
+2.0000 	4   
+1.5300 	2   
+1.5000 	21  
+
+PAD bDiam	Q.
+1.8796 	15  
+1.0500 	2   
+0.9000 	2   
+2.0000 	4   
+1.5300 	2   
+1.5000 	21  
+
+PAD tRestring	Q.
+0.4318 	15  
+0.2250 	2   
+0.1500 	2   
+0.3750 	4   
+0.2550 	2   
+0.3000 	21  
+
+PAD bRestring	Q.
+0.4318 	15  
+0.2250 	2   
+0.1500 	2   
+0.3750 	4   
+0.2550 	2   
+0.3000 	21  
+
+PAD iDiam	Q.
+1.5240 	15  
+0.9000 	4   
+1.8750 	4   
+1.5300 	2   
+1.3500 	21  
+
+PAD iRestring	Q.
+0.2540 	15  
+0.1500 	4   
+0.3125 	4   
+0.2550 	2   
+0.2250 	21  
+
+VIA Outer-Diam	Q.
+0.6548 	188 
+
+VIA Outer-Restring 	Q.
+0.1524 	188 
+
+VIA Inner-Diam.	Q.
+0.6548 	188 
+
+VIA Inner-Restring	Q.
+0.1524 	188 
+
+VIA drill	Q.
+0.3500 	188 
+
+VIA Stack	Q.
+01-16	188 
+01-16-PAD	46  
+
+PAD drill	Q.
+1.0160 	15  
+0.6000 	4   
+1.2500 	4   
+1.0200 	2   
+0.9000 	21  
+
+----------------------------
+HOLE drill	Q.
+3.2000 	4   
+0.6500 	2   
+0.9000 	6   
+1.8500 	2   
+
+RACK
+T01   0.4
+T02   0.6
+T03   0.7
+T04   0.9
+T05   1.0
+T06   1.3
+T07   1.9
+T08   3.2
+
+----------------------------
+LIBRARY	Q.
+Fasal Capacitor Generic Family	19  
+Fasal Diode ESD Bidirectional PESD5V0S1BA_115	2   
+Fasal Diode TVS PRTR5V0U2X_215	1   
+Fasal Diode Schottkey 20V2A SDM2U20SD3-7	2   
+Fasal Fuse PPTC 1206L300SLTHYR	1   
+Fasal REG RT9193-33GB	2   
+Fasal Generic Header THT	4   
+SparkFun-Connectors	1   
+Fasal Header 7x2 SMD 3220-14-0300-00	1   
+Fasal micro SD Card - Hing - Molex-47219-2001	2   
+Fasal USB Type-C 12402012E212A	1   
+Fasal LED Generic Family	2   
+Fasal LED RGB 150505M173300	1   
+Fasal pogo pin horizontal pad	6   
+Fasal Resistor Generic Family	36  
+Fasal Slide Switch SMD PCM12SMTR	3   
+Fasal TACT Switch SMD 6mmx3.5mm PTS636 SM25F	1   
+Fasal TACT Switch THT Big B3F-4055	1   
+fasal testpad	5   
+Fasal Test Point THT Keystone 5004	2   
+SparkFun-Aesthetics	1   
+Fasal MCU STM32F103RET6	1   
+Fasal USB to UART CP2102N-A02-GQFN28R	1   
+Fasal JST XH Connectors	5   
+Fasal Crystal ABS07-32.768KHZ-T	1   
+Fasal Crystal 8MHz ABM3B-8.000MHZ-B2-T	1   
+
+PACKAGE	Q.
+C0603	19  
+SOD2512X110N	2   
+PRTR5V0U2X	1   
+SOD2513X120N	2   
+1206L075SLYR	1   
+SOT94P279X130-5N	2   
+1X05	1   
+JST04_1MM_VERT	1   
+1X04	1   
+1X03	2   
+322014030000	1   
+472192001	2   
+AMPHENOL_12402012E212A	1   
+LED_CHIP_0603	2   
+150505M173300	1   
+1X01_SMD_PAD	6   
+R0603	36  
+PCM12SMTR	3   
+TACTILE_SWITCH_SMD_6.0X3.5MM	1   
+B3F-4055	1   
+B1,27	5   
+5004	2   
+QWIIC_3MM	1   
+QFP50P1200X1200X160-64N	1   
+QFN50P500X500X80-29N	1   
+B4B-XH-A	1   
+B3B-XH-A	2   
+B5B-XH-A	1   
+S6B-XH-A	1   
+ABS07	1   
+ABM3B8000MHZB2T	1   
+
+VALUE	PAC	Q.	Top	Bot
+1uF	C0603	4	4	0
+22nF	C0603	2	2	0
+4.7uF	C0603	2	2	0
+15pF	C0603	2	2	0
+27pF	C0603	2	2	0
+100nF	C0603	7	7	0
+PESD5V0S1BA,115	SOD2512X110N	2	2	0
+DRTR5V0U2SR-7	PRTR5V0U2X	1	1	0
+SDM2U20SD3-7	SOD2513X120N	2	2	0
+MF-NSML300/6-2	1206L075SLYR	1	1	0
+RT9193-33GB	SOT94P279X130-5N	2	2	0
+1X05_MALE/DNP	1X05	1	1	0
+Vertical Qwiic Connector	JST04_1MM_VERT	1	1	0
+1X04_MALE/DNP	1X04	1	1	0
+1X03_MALE/DNP	1X03	2	2	0
+3220-14-0300-00	322014030000	1	1	0
+47219-2001	472192001	2	1	1
+12402012E212A	AMPHENOL_12402012E212A	1	1	0
+RED	LED_CHIP_0603	2	2	0
+150505M173300	150505M173300	1	1	0
+RA 1 pin	1X01_SMD_PAD	6	0	6
+100K	R0603	1	1	0
+4.7K	R0603	2	2	0
+0E	R0603	10	10	0
+5.1K	R0603	2	2	0
+1K	R0603	1	1	0
+10K/DNP	R0603	4	4	0
+10K	R0603	9	9	0
+10M	R0603	1	1	0
+2K2	R0603	2	2	0
+1M	R0603	1	1	0
+100E	R0603	2	2	0
+390E	R0603	1	1	0
+PCM12SMTR	PCM12SMTR	3	3	0
+PTS636 SK25F SMTR LFS	TACTILE_SWITCH_SMD_6.0X3.5MM	1	1	0
+B3F-4055	B3F-4055	1	1	0
+TPB1,27	B1,27	5	5	0
+5004	5004	2	2	0
+~/-empty-/~U$50	QWIIC_3MM	1	1	0
+STM32F103RET6TR	QFP50P1200X1200X160-64N	1	1	0
+CP2102N-A02-GQFN28R	QFN50P500X500X80-29N	1	1	0
+B4B-XH-A	B4B-XH-A	1	1	0
+B3B-XH-A	B3B-XH-A	2	2	0
+B5B-XH-A	B5B-XH-A	1	1	0
+S6B-XH-A	S6B-XH-A	1	1	0
+ABS07-32.768KHZ-T	ABS07	1	1	0
+ABM3B-8.000MHZ-B-2-T	ABM3B8000MHZB2T	1	1	0
+
+----------------------------
+RECT x	RECT y	Q.
+0 RECT (copper)
+
+----------------------------
+RECT Layer	Q.
+
+----------------------------
+TEXT (s)	Q.
+1.4224 	1   
+1.7780 	1   
+2 TEXT size (copper)
+
+TEXT (w)	Q.
+0.2032 	1   
+0.3556 	1   
+2 TEXT wire width (copper)
+
+TEXT 	Q.
+1.4224 	4   
+0.9000 	6   
+1.2700 	13  
+1.0160 	7   
+0.8128 	4   
+1.7780 	1   
+1.6764 	5   
+7 TEXT size (place)
+5 TEXT wire width (place)
+
+CIRCLE diam.	Q.
+4.4045 	8   
+8 CIRCLE (copper)
+
+End report
