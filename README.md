@@ -23,6 +23,8 @@ The "FileFerry-Click2Flash" PCB with the pogo pins.
   * All manufacturing files, including Gerber, BOM, PnP_XY, and prototype manufacturing files (Order BOM and PnP) that can be used to order directly from JLCPCB for a complete PCBA job.
 * */Assets 📸*
   * GitHub assets like images and other resources
+* */Demo 📸*
+  * Demontration resources to compile the firmware, flash it to the "FileFerry-Click2Flash" board and use it.
 
 🔍 What is FileFerry-Click2Flash?
 -------------------
