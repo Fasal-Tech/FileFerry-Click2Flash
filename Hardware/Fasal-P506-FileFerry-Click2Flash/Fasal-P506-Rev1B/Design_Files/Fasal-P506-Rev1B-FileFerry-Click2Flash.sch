@@ -4205,8 +4205,8 @@ chip</description>
 <wire x1="1.016" y1="-1.016" x2="1.651" y2="1.016" width="0.2032" layer="94"/>
 <wire x1="1.651" y1="1.016" x2="2.286" y2="-1.016" width="0.2032" layer="94"/>
 <wire x1="2.286" y1="-1.016" x2="2.54" y2="0" width="0.2032" layer="94"/>
-<text x="-3.81" y="1.4986" size="1.778" layer="95">&gt;NAME</text>
-<text x="-3.81" y="-3.302" size="1.778" layer="96">&gt;VALUE</text>
+<text x="-5.08" y="2.54" size="1.778" layer="95" align="center">&gt;NAME</text>
+<text x="5.08" y="2.54" size="1.778" layer="96" align="center">&gt;VALUE</text>
 <pin name="2" x="5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="1" x="-5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1"/>
 </symbol>
@@ -5088,7 +5088,7 @@ Source: &lt;a href="https://katalog.we-online.de/led/datasheet/150505M173300.pdf
 <smd name="26" x="-0.5" y="2.35" dx="1" dy="0.3" layer="1" rot="R90"/>
 <smd name="27" x="-1" y="2.35" dx="1" dy="0.3" layer="1" rot="R90"/>
 <smd name="28" x="-1.5" y="2.35" dx="1" dy="0.3" layer="1" rot="R90"/>
-<smd name="29" x="0" y="0" dx="3.35" dy="3.35" layer="1" rot="R90"/>
+<smd name="29" x="0" y="0" dx="3.35" dy="3.35" layer="1" rot="R90" cream="no"/>
 <text x="-0.1" y="4" size="1.27" layer="21" font="vector" ratio="15" align="center">&gt;NAME</text>
 <text x="-0.1" y="-3.9" size="1.27" layer="27" align="center">&gt;VALUE</text>
 <wire x1="-3.1" y1="3.1" x2="3.1" y2="3.1" width="0.05" layer="51"/>
@@ -5104,6 +5104,10 @@ Source: &lt;a href="https://katalog.we-online.de/led/datasheet/150505M173300.pdf
 <wire x1="3.1" y1="1.7" x2="3.1" y2="3.1" width="0.1524" layer="21"/>
 <wire x1="3.1" y1="3.1" x2="1.7" y2="3.1" width="0.1524" layer="21"/>
 <circle x="-3.55" y="1.45" radius="0.125" width="0.25" layer="21"/>
+<rectangle x1="0.254" y1="-1.27" x2="1.27" y2="-0.254" layer="31"/>
+<rectangle x1="-1.27" y1="-1.27" x2="-0.254" y2="-0.254" layer="31"/>
+<rectangle x1="-1.27" y1="0.254" x2="-0.254" y2="1.27" layer="31"/>
+<rectangle x1="0.254" y1="0.254" x2="1.27" y2="1.27" layer="31"/>
 </package>
 </packages>
 <packages3d>
