@@ -2,7 +2,7 @@ FileFerry-Click2Flash - Hardware
 ========================================
 This directory will contain the hardware design files for the 'FileFerry-Click2Flash project.
 
-#Software:
+# ECAD Tool #
 Autodesk Eagle 9.6.2
 
 Repository Contents
