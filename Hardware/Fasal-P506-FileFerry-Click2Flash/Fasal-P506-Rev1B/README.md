@@ -25,19 +25,3 @@ This directory contains all the Hardware related files for the main "FileFerry-C
 * **/Testing_Files**
 	* Board bring-up Arduino Test Code
 	* Board Bring-up test case and report
-
-## Why Arduino? ##
-* This code is written by a Electronics Engineer.
-* The production code is in the official STM32Cube IDE
-* Arduino is quick to tinker, for the sake of board bring-up. It is easy to use and this electronics engineer believes that it is more than sufficient to test a new PCBA for bring-up activities.
-
-## Wroking ##
-The Arduino code (Sketch) is simple. It does the following:
-* Prints a welcome message
-* Blinks the RGB LED through various colors (7 color combination)
-* Increments a counter
-* Interrupt function that prints a "Button pressed" messade everytime the user button is pressed
-
-## Screenshots ##
-![IDE 1](Images/IDE_1.png)
-![IDE 2](Images/IDE_2.png)
