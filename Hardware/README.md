@@ -11,7 +11,7 @@ Autodesk Eagle 9.6.2
 
 # Hardware Bloack Diagram
 
-![Hardware Bloack Diagram](/FileFerry-Click2Flash_Block-Diagram.png)
+![Hardware Bloack Diagram](FileFerry-Click2Flash_Block-Diagram.png)
 
 ## Contact-Me
 
