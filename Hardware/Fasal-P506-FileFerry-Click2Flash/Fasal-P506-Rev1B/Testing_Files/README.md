@@ -23,5 +23,5 @@ The Arduino code (Sketch) is simple. It does the following:
 * Interrupt function that prints a "Button pressed" messade everytime the user button is pressed
 
 ## Screenshots ##
-![IDE 1](/Images/IDE1.png)
-![IDE 2](/Images/IDE2.png)
+![IDE 1](Images/IDE_1.png)
+![IDE 2](Images/IDE_2.png)
