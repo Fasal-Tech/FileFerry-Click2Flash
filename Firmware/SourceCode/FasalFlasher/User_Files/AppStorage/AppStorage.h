@@ -1,12 +1,12 @@
 /**
  * @file AppStorage.h
  * @author Vishal Keshava Murthy
- * @brief App storage interface 
+ * @brief App storage interface
  * @version 0.1
  * @date 2024-06-07
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -20,11 +20,11 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#define FLASH_POWER_EN_PORT	(SENSOR_POWER_ENABLE_GPIO_Port)		/**< Port of GPIO that controls power to external board*/
-#define FLASH_POWER_EN_PIN	(SENSOR_POWER_ENABLE_Pin)			/**< Pin of GPIO that controls power to external board*/
+#define FLASH_POWER_EN_PORT (SENSOR_POWER_ENABLE_GPIO_Port) ///< Port of GPIO that controls power to external board
+#define FLASH_POWER_EN_PIN (SENSOR_POWER_ENABLE_Pin)        ///< Pin of GPIO that controls power to external board
 
-#define TRANSFER_MODE_PORT	(TRANSFER_MODE_GPIO_Port)			/**< Port of GPIO that determines the transfer mode of operation*/
-#define TRANSFE_MODE_PIN	(TRANSFER_MODE_Pin)					/**< Pin of GPIO that determines the transfer mode of operation*/
+#define TRANSFER_MODE_PORT (TRANSFER_MODE_GPIO_Port) ///< Port of GPIO that determines the transfer mode of operation
+#define TRANSFE_MODE_PIN (TRANSFER_MODE_Pin)         ///< Pin of GPIO that determines the transfer mode of operation
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -34,10 +34,10 @@
  */
 typedef enum
 {
-	eTX_MODE_SDCARD_TO_FLASH,
-	eTX_MODE_XMODEM_TO_FLASH,
-	eTX_MODE_MAX
-}eTransferMode_t;
+    eTX_MODE_SDCARD_TO_FLASH,
+    eTX_MODE_XMODEM_TO_FLASH,
+    eTX_MODE_MAX
+} eTransferMode_t;
 
 ///////////////////////////////////////////////////////////////////////////////
 

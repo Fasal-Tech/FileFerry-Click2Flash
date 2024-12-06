@@ -4,19 +4,18 @@
  * @brief Interface for LittleFS_Wrapper
  * @version 0.1
  * @date 2023-08-16
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#ifndef _LITTLE_FS_WRAPPER_H    /* Guard against multiple inclusion */
+#ifndef _LITTLE_FS_WRAPPER_H
 #define _LITTLE_FS_WRAPPER_H
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <stdint.h>
 #include <stdbool.h>
 #include "lfs.h"
 
@@ -27,7 +26,4 @@ bool lfs_Test(void);
 
 ///////////////////////////////////////////////////////////////////////////////
 
-
-
 #endif /* _LITTLE_FS_WRAPPER_H */
-

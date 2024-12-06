@@ -1,0 +1,11 @@
+BasedOnStyle: LLVM
+BreakBeforeBraces: Allman
+AlwaysBreakAfterDefinitionReturnType: None
+ColumnLimit: 160
+IndentWidth: 4
+ContinuationIndentWidth : 4
+IndentCaseLabels: true
+PointerAlignment: Left
+AlignArrayOfStructures: Left
+AllowShortFunctionsOnASingleLine: None
+SortIncludes: false

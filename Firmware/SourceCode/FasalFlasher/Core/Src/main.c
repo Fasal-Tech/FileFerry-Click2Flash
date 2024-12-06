@@ -29,10 +29,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
-#include "AppCommon.h"
+#include "AppConfiguration.h"
 #include "AppFasal.h"
-
+#include "AppInterrupts.h"
+#include "AppResetAndError.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -180,7 +180,7 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-	AppCommon_HALErrorHandler();
+	AppISR_HALErrorHandler();
   /* USER CODE END Error_Handler_Debug */
 }
 

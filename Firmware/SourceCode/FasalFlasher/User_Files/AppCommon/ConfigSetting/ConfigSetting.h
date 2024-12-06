@@ -21,18 +21,17 @@
  */
 typedef enum
 {
-	eCONFIG_SETTING_0,
-	eCONFIG_SETTING_1,
-	eCONFIG_SETTING_2,
-	eCONFIG_SETTING_3,
-	eCONFIG_SETTING_MAX,
-}eConfigSettingMode_t;
+    eCONFIG_SETTING_0,
+    eCONFIG_SETTING_1,
+    eCONFIG_SETTING_2,
+    eCONFIG_SETTING_3,
+    eCONFIG_SETTING_MAX,
+} eConfigSettingMode_t;
 
 ///////////////////////////////////////////////////////////////////////////////
 
 eConfigSettingMode_t ConfigSetting_GetCurrentSetting();
 
 ///////////////////////////////////////////////////////////////////////////////
-
 
 #endif /* APPCOMMON_CONFIGSETTING_CONFIGSETTING_H_ */

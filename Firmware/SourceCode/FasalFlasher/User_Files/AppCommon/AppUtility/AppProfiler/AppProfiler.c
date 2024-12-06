@@ -21,9 +21,9 @@
  */
 void AppProfiler_StartExecutionTimeMeasurement()
 {
-	CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-	DWT->CYCCNT = 0;
-	DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+    CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+    DWT->CYCCNT = 0;
+    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 }
 
 /**
@@ -34,11 +34,11 @@ void AppProfiler_StartExecutionTimeMeasurement()
  */
 uint32_t AppProfiler_GetExecutionTimeMS()
 {
-	uint32_t currentTick = DWT->CYCCNT;
+    uint32_t currentTick = DWT->CYCCNT;
 
-	uint32_t executionTimeMs = currentTick / (SystemCoreClock / 1000u) ;
+    uint32_t executionTimeMs = currentTick / (SystemCoreClock / 1000u);
 
-	return executionTimeMs;
+    return executionTimeMs;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

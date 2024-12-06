@@ -13,9 +13,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-
 #include "gpio.h"
-
 #include "PushButton.h"
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -26,9 +24,9 @@
  */
 bool PushButton_IsFlashButtonPressed()
 {
-	GPIO_PinState pinstate = HAL_GPIO_ReadPin(FLASH_BUTTON_GPIO_Port, FLASH_BUTTON_Pin);
+    GPIO_PinState pinstate = HAL_GPIO_ReadPin(FLASH_BUTTON_GPIO_Port, FLASH_BUTTON_Pin);
 
-	return (GPIO_PIN_RESET == pinstate);
+    return (GPIO_PIN_RESET == pinstate);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

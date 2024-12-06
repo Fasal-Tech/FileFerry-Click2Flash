@@ -9,21 +9,23 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include User_Files/xModem/subdir.mk
 -include User_Files/AppStorage/AppSDFS/subdir.mk
 -include User_Files/AppStorage/AppFlashFS/W25Qxx/subdir.mk
 -include User_Files/AppStorage/AppFlashFS/LittleFS/subdir.mk
 -include User_Files/AppStorage/AppFlashFS/subdir.mk
 -include User_Files/AppStorage/subdir.mk
+-include User_Files/AppInterrupts/subdir.mk
+-include User_Files/AppInterface/xModem/subdir.mk
+-include User_Files/AppInterface/Console/subdir.mk
+-include User_Files/AppFasal/AppResetAndError/subdir.mk
 -include User_Files/AppFasal/subdir.mk
--include User_Files/AppCommon/TriColorLED/subdir.mk
+-include User_Files/AppConfiguration/subdir.mk
 -include User_Files/AppCommon/PushButton/subdir.mk
--include User_Files/AppCommon/Console/subdir.mk
 -include User_Files/AppCommon/ConfigSetting/subdir.mk
 -include User_Files/AppCommon/AppUtility/SoftTimer/subdir.mk
 -include User_Files/AppCommon/AppUtility/AppProfiler/subdir.mk
--include User_Files/AppCommon/AppConfiguration/subdir.mk
--include User_Files/AppCommon/subdir.mk
+-include User_Files/AppCommon/AppIndication/TriColorLED/subdir.mk
+-include User_Files/AppCommon/AppIndication/subdir.mk
 -include Middlewares/Third_Party/FatFs/src/option/subdir.mk
 -include Middlewares/Third_Party/FatFs/src/subdir.mk
 -include FATFS/Target/subdir.mk

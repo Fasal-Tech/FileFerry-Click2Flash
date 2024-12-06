@@ -16,39 +16,31 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "AppCommon.h"
-
-///////////////////////////////////////////////////////////////////////////////
-
-
 /**
  * @brief Enumeration for various states of @ref AppFasal_RunNova
  *
  */
 typedef enum
 {
-	eFASAL_APP_INIT,
-	eFASAL_APP_STARTUP_MSG,
-	eFASAL_APP_BUTTON_WAIT,
-	eFASAL_APP_SD_INIT,
-	eFASAL_APP_SD_CHECK,
-	eFASAL_APP_FLASH_INIT,
-	eFASAL_APP_MODE_SELECTION,
-	eFASAL_APP_SD_FLASH_TRANSFER,
-	eFASAL_APP_XMODEM_TRANSFER,
-	eFASAL_APP_CRC_COMPARE,
-	eFASAL_APP_TRANSFER_SUCCESS,
-
-	eFASAL_APP_SD_FAIL,
-	eFASAL_APP_SD_FILE_FAIL,
-	eFASAL_APP_FLASH_FAIL,
-	eFASAL_APP_TRANSFER_FAIL,
-	eFASAL_APP_CRC_FAIL,
-
-	eFASAL_APP_END,
-
-	eFASAL_MAX_STATE,
-}eAppFasalStates_t;
+    eAPP_INIT,
+    eAPP_STARTUP_MSG,
+    eAPP_BUTTON_WAIT,
+    eAPP_SD_INIT,
+    eAPP_SD_CHECK,
+    eAPP_FLASH_INIT,
+    eAPP_MODE_SELECTION,
+    eAPP_SD_FLASH_TRANSFER,
+    eAPP_XMODEM_TRANSFER,
+    eAPP_CRC_COMPARE,
+    eAPP_TRANSFER_SUCCESS,
+    eAPP_SD_FAIL,
+    eAPP_SD_FILE_FAIL,
+    eAPP_FLASH_FAIL,
+    eAPP_TRANSFER_FAIL,
+    eAPP_CRC_FAIL,
+    eAPP_END,
+    eAPP_MAX_STATE,
+} eAppFasalStates_t;
 
 ///////////////////////////////////////////////////////////////////////////////
 

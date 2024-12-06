@@ -4,29 +4,25 @@
  * @brief soft-timer implementation
  * @version 0.2
  * @date 2023-05-28
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <assert.h>
-
-#include "SoftTimer/SoftTimer.h"
+#include "SoftTimer.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief All soft-timer instances are captured here
- * 
+ *
  */
-static volatile sSoftTimer_t gvSoftTimers[eSOFT_TIMER_MAX] ;
-
+static volatile sSoftTimer_t gvSoftTimers[eSOFT_TIMER_MAX];
 
 ///////////////////////////////////////////////////////////////////////////////
-
-
 
 /**
  * @brief Periodic call from soft-timer that checks if any registered timers have expired
@@ -35,70 +31,81 @@ static volatile sSoftTimer_t gvSoftTimers[eSOFT_TIMER_MAX] ;
  */
 void SoftTimer_cbPeriodicCheck()
 {
-	for (eSoftTimerID_t i = 0; i < eSOFT_TIMER_MAX; i++)
-	{
-		if (!gvSoftTimers[i].IsArmed || gvSoftTimers[i].currentTicks == 0)
-		{
-			continue;
-		}
+    for (eSoftTimerID_t i = 0; i < eSOFT_TIMER_MAX; i++)
+    {
+        if (!gvSoftTimers[i].IsArmed || gvSoftTimers[i].currentTicks == 0)
+        {
+            continue;
+        }
 
-		if (--gvSoftTimers[i].currentTicks == 0)
-		{
-			if(NULL != gvSoftTimers[i].pfCallBack )
-			{
-				gvSoftTimers[i].pfCallBack();
-			}
+        if (--gvSoftTimers[i].currentTicks == 0)
+        {
+            if (NULL != gvSoftTimers[i].pfCallBack)
+            {
+                gvSoftTimers[i].pfCallBack();
+            }
 
-			if (gvSoftTimers[i].IsPeriodic)
-			{
-				gvSoftTimers[i].currentTicks = gvSoftTimers[i].setTicks;
-				gvSoftTimers[i].IsArmed = true;
-			}
-		}
-	}
+            if (gvSoftTimers[i].IsPeriodic)
+            {
+                gvSoftTimers[i].currentTicks = gvSoftTimers[i].setTicks;
+                gvSoftTimers[i].IsArmed = true;
+            }
+        }
+    }
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Default call back for soft-timers without any executors
- * 
+ *
  */
 static void SoftTimer_DefaultCallBackFunction()
 {
-	__NOP();
+    __NOP();
+}
+
+/**
+ * @brief Automatically determine the software overflow period from timer instance
+ * @note Designed for 10ms for the current clock tree
+ */
+static inline uint32_t SoftTimer_GetSoftTimerBaseOverFlowPeriodMS()
+{
+    uint32_t TimerOverFlowPeriodMS =
+        (1000u * (SOFTTIMER_TIMER_INSTANCE->Init.Prescaler + 1) * (SOFTTIMER_TIMER_INSTANCE->Init.Period)) / HAL_RCC_GetPCLK1Freq();
+
+    return TimerOverFlowPeriodMS;
 }
 
 /**
  * @brief Utility function to convert timeinMS to soft-timer ticks count
- * 
- * @param timeMs 
+ *
+ * @param timeMs
  * @return uint32_t
  */
 static uint32_t SoftTimer_timeToTicks(uint32_t timeMs)
 {
-	uint32_t ticks = timeMs/SOFTTIMER_OVERFLOW_PERIOD_MS;
+    uint32_t ticks = timeMs / SoftTimer_GetSoftTimerBaseOverFlowPeriodMS();
 
-	return ticks;
+    return ticks;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief Initialize soft-timer
- * 
+ *
  */
 void SoftTimer_Init()
 {
-	for(eSoftTimerID_t i=0; i<eSOFT_TIMER_MAX; i++)
-	{
-		gvSoftTimers[i].IsArmed = false;
-		gvSoftTimers[i].IsPeriodic = false;
-		gvSoftTimers[i].pfCallBack = SoftTimer_DefaultCallBackFunction;
-	}
+    for (eSoftTimerID_t i = 0; i < eSOFT_TIMER_MAX; i++)
+    {
+        gvSoftTimers[i].IsArmed = false;
+        gvSoftTimers[i].IsPeriodic = false;
+        gvSoftTimers[i].pfCallBack = SoftTimer_DefaultCallBackFunction;
+    }
 
-	HAL_TIM_Base_Start_IT(SOFTTIMER_TIMER_INSTANCE);
+    HAL_TIM_Base_Start_IT(SOFTTIMER_TIMER_INSTANCE);
 }
 
 /**
@@ -109,15 +116,15 @@ void SoftTimer_Init()
  */
 __attribute__((unused)) static uint32_t SoftTimer_GetTimeLeft(eSoftTimerID_t id)
 {
-	assert(eSOFT_TIMER_MAX > id);
+    assert(eSOFT_TIMER_MAX > id);
 
-	HAL_NVIC_DisableIRQ(SOFTTIMER_IRQ);
+    HAL_NVIC_DisableIRQ(SOFTTIMER_IRQ);
 
-	uint32_t timeLeft = ((gvSoftTimers[id].currentTicks)*SOFTTIMER_OVERFLOW_PERIOD_MS) ;
+    uint32_t timeLeft = ((gvSoftTimers[id].currentTicks) * SoftTimer_GetSoftTimerBaseOverFlowPeriodMS());
 
-	HAL_NVIC_EnableIRQ(SOFTTIMER_IRQ);
+    HAL_NVIC_EnableIRQ(SOFTTIMER_IRQ);
 
-	return timeLeft;
+    return timeLeft;
 }
 
 /**
@@ -126,121 +133,119 @@ __attribute__((unused)) static uint32_t SoftTimer_GetTimeLeft(eSoftTimerID_t id)
  */
 void SoftTimer_DeInit()
 {
-	HAL_TIM_Base_Stop_IT(SOFTTIMER_TIMER_INSTANCE);
+    HAL_NVIC_ClearPendingIRQ(SOFTTIMER_IRQ);
+    HAL_TIM_Base_Stop_IT(SOFTTIMER_TIMER_INSTANCE);
 }
 
 /**
  * @brief Register a periodic function with soft-timer, create ID under @ref eSoftTimerID
  * and attach call-back and time period through this function
- * 
- * @param id 
- * @param timeOut 
+ *
+ * @param id
+ * @param timeOut
  * @param IsPeriodic
- * @param callbackFunction 
+ * @param callbackFunction
  */
-void SoftTimer_Register(eSoftTimerID_t id, uint32_t timeOut, bool IsPeriodic, pfCallBack_t callbackFunction )
+void SoftTimer_Register(eSoftTimerID_t id, uint32_t timeOut, bool IsPeriodic, pfCallBack_t callbackFunction)
 {
-	assert(id < eSOFT_TIMER_MAX);
+    assert(id < eSOFT_TIMER_MAX);
 
-	callbackFunction = (NULL == callbackFunction)? SoftTimer_DefaultCallBackFunction : callbackFunction;
+    callbackFunction = (NULL == callbackFunction) ? SoftTimer_DefaultCallBackFunction : callbackFunction;
 
-	HAL_NVIC_DisableIRQ(SOFTTIMER_IRQ);
+    HAL_NVIC_DisableIRQ(SOFTTIMER_IRQ);
 
-	gvSoftTimers[id].IsArmed = false;
-	gvSoftTimers[id].IsPeriodic = IsPeriodic;
-	gvSoftTimers[id].pfCallBack = callbackFunction;
-	gvSoftTimers[id].setTicks = SoftTimer_timeToTicks(timeOut);
-	gvSoftTimers[id].currentTicks = SoftTimer_timeToTicks(timeOut);
+    gvSoftTimers[id].IsArmed = false;
+    gvSoftTimers[id].IsPeriodic = IsPeriodic;
+    gvSoftTimers[id].pfCallBack = callbackFunction;
+    gvSoftTimers[id].setTicks = SoftTimer_timeToTicks(timeOut);
+    gvSoftTimers[id].currentTicks = SoftTimer_timeToTicks(timeOut);
 
-	HAL_NVIC_EnableIRQ(SOFTTIMER_IRQ);
-
+    HAL_NVIC_EnableIRQ(SOFTTIMER_IRQ);
 }
 
 /**
  * @brief Start soft-timer
- * 
- * @param id 
+ *
+ * @param id
  * @param IsStartNeeded
  */
 void SoftTimer_Start(eSoftTimerID_t id, bool IsStartNeeded)
 {
-	assert(id < eSOFT_TIMER_MAX);
+    assert(id < eSOFT_TIMER_MAX);
 
-	HAL_NVIC_DisableIRQ(SOFTTIMER_IRQ);
+    HAL_NVIC_DisableIRQ(SOFTTIMER_IRQ);
 
-	gvSoftTimers[id].IsArmed = IsStartNeeded;
-	gvSoftTimers[id].currentTicks = gvSoftTimers[id].setTicks ;
+    gvSoftTimers[id].IsArmed = IsStartNeeded;
+    gvSoftTimers[id].currentTicks = gvSoftTimers[id].setTicks;
 
-
-	HAL_NVIC_EnableIRQ(SOFTTIMER_IRQ);
+    HAL_NVIC_EnableIRQ(SOFTTIMER_IRQ);
 }
-
 
 /**
  * @brief Function to disable and enable soft-timer for creating critical sections
- * 
+ *
  * @param id ID of the soft-timer to pause/resume
  * @param IsPauseNeeded Pause if true, resume if false
  */
 void SoftTimer_Pause(eSoftTimerID_t id, bool IsPauseNeeded)
 {
-	assert(id < eSOFT_TIMER_MAX);
+    assert(id < eSOFT_TIMER_MAX);
 
-	HAL_NVIC_DisableIRQ(SOFTTIMER_IRQ);
+    HAL_NVIC_DisableIRQ(SOFTTIMER_IRQ);
 
-	gvSoftTimers[id].IsArmed = (true == IsPauseNeeded)?false:true;
+    gvSoftTimers[id].IsArmed = (true == IsPauseNeeded) ? false : true;
 
-	HAL_NVIC_EnableIRQ(SOFTTIMER_IRQ);
+    HAL_NVIC_EnableIRQ(SOFTTIMER_IRQ);
 }
 
 /**
  * @brief Collectively start all registered soft-timers
- * 
+ *
  * @param IsStartNeeded
  */
 void SoftTimer_StartAll(bool IsStartNeeded)
 {
-	for(eSoftTimerID_t i=0; i<eSOFT_TIMER_MAX; i++)
-	{
-		SoftTimer_Start(i, IsStartNeeded);
-	}
+    for (eSoftTimerID_t i = 0; i < eSOFT_TIMER_MAX; i++)
+    {
+        SoftTimer_Start(i, IsStartNeeded);
+    }
 }
 
 /**
  * @brief Check if soft-timers  has expired
- * 
+ *
  * @param id id of soft-timer  to be checked
  * @return true if soft-timer has expired
  * @return false if V has not expired / has not been enabled
  */
 bool SofTimer_IsExpired(eSoftTimerID_t id)
 {
-	assert(id < eSOFT_TIMER_MAX);
+    assert(id < eSOFT_TIMER_MAX);
 
-	return (0 == gvSoftTimers[id].currentTicks);
+    return (0 == gvSoftTimers[id].currentTicks);
 }
 
 /**
- * @brief Set Aperiodic timer instance useful for setting timeouts 
- * @note @ref eGENERIC_COUNT_DOWN_TIMER must not be used for other periodic timers 
- * 
+ * @brief Set Aperiodic timer instance useful for setting timeouts
+ * @note @ref eGENERIC_COUNT_DOWN_TIMER must not be used for other periodic timers
+ *
  * @param timeOut time out to set the aperiodic timer
  */
 void SoftTimer_AperiodicTimerSet(uint32_t timeOut)
 {
-	SoftTimer_Register(eGENERIC_COUNT_DOWN_TIMER, timeOut, false, SoftTimer_DefaultCallBackFunction);
-	SoftTimer_Start(eGENERIC_COUNT_DOWN_TIMER, true);
+    SoftTimer_Register(eGENERIC_COUNT_DOWN_TIMER, timeOut, false, SoftTimer_DefaultCallBackFunction);
+    SoftTimer_Start(eGENERIC_COUNT_DOWN_TIMER, true);
 }
 
 /**
  * @brief Check if aperiodic timer has expired
- * 
- * @return true if timer has expired 
- * @return false if timer has not expired/ Registered / started 
+ *
+ * @return true if timer has expired
+ * @return false if timer has not expired/ Registered / started
  */
 bool SoftTimer_HasAperiodicTimerExpired()
 {
-	return SofTimer_IsExpired(eGENERIC_COUNT_DOWN_TIMER);
+    return SofTimer_IsExpired(eGENERIC_COUNT_DOWN_TIMER);
 }
 
 /**
@@ -251,4 +256,14 @@ bool SoftTimer_HasAperiodicTimerExpired()
 void SoftTimer_DelayMS(uint32_t delayMS)
 {
     HAL_Delay(delayMS);
+}
+
+/**
+ * @brief Wrapper around HAL tick count
+ *
+ * @return tick count from HAL
+ */
+uint32_t SoftTimer_GetCurrentMSTick()
+{
+    return HAL_GetTick();
 }
