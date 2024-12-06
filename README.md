@@ -1,157 +1,132 @@
-# Fasal Flasher {#mainpage}
+# 🚀 FileFerry-Click2Flash
 
-This repository contains Fasal Flasher Source Code. Dive right into the codebase through @ref AppFasal_Run invoked in @ref main.c !
+A compact and portable tool designed for easy factory programming of your IoT product. 🌐 Transfer files, binary images, security credentials, or certificates from an SD card or from a Serial terminal over USB to a target SPI flash IC with just a click of a button. 🎯
 
-## Table of contents
+This repository contains all the necessary files to manufacture your own samples from JLCPCB (or a vendor of your choice) and start using it right away
 
-- [Context](#Context)
-- [Project-structure](#project-structure)
-- [Code-flow](#code-flow)
-- [Build-Instruction](#build-instruction)
-- [Documentation](#docs)
-- [Contact-Me](#contact-me)
+The included firmware source code and compiled binaries can be used right out of the box! 🛠️ You can also modify the design and code and build your own custom product. ✨
 
-## Context
+## Product Image
 
-Fasal Flasher is an Internal tool meant as a production floor Aid. Its primary purpose is to update the contents flash IC
-W25Qxx either with the contents of the Fasal Flasher onboard SD-Card or over a serial terminal over XModem protocol.
-The device has the following salient features
+![FileFerry-Click2Flash PCB](/Assets/images/PCBA_1.jpg)
+The "FileFerry-Click2Flash" PCB.
 
-1. Powered by USB either through PC, Mobile phone or any USB source
-2. File Input from either Serial console through USB connector or SD-Card
-3. Slide switch to select between file source of SD-Card and Serial console (X-modem)
-4. The W25Qxx flash IC in external board is powered through the Fasal Flasher and programmed over SPI
-5. PushButton to trigger the transfer in the configured Mode
-6. Tri-Color LED for visual indication about the process result
-7. Logs over the same USB cable with information about the running application
-8. File Integrity check via CRC in case of SD-Card transfer mode
-9. File Integrity check inbuilt via XModem protocol in case of XModem transfer mode
+![FileFerry-Click2Flash PCB with pogo pins](/Assets/images/PCBA_2.jpg)
+The "FileFerry-Click2Flash" PCB with the pogo pins.
 
-![Fasal Flasher Usage](Docs/Design_Document/Assets/FasalFlasher_Context.png)
+## 📁 Repository Contents
 
-## Project-structure
+* **/Hardware 🛠️**
+  * All Eagle design files (.brd, .sch)
+* **/Firmware 💻**
+  * Pre-compiled binaries to flash the board
+  * Firmware source code (STM32Cube IDE, HAL) that you can use to modify the functionality
+* **/Manufacturing 🏭**
+  * All manufacturing files, including Gerber, BOM, PnP_XY, and prototype manufacturing files (Order BOM and PnP) that can be used to order directly from JLCPCB for a complete PCBA job.
+* **/Assets 📸**
+  * GitHub assets like images and other resources
+* **/Demo 📸**
+  * Demonstration resources to compile the firmware, flash it to the "FileFerry-Click2Flash" board and use it.
 
-1. The project is divided into the following folders
-2. @ref SourceCode/FasalFlasher/Core : Contains CubeMX Generated Files utilizing the STM HAL. These files are mostly unmodified and used as is
-3. @ref SourceCode/FasalFlasher/Drivers : STM HAL files
-4. @ref SourceCode/FasalFlasher/FATFS : FatFS library
-5. @ref SourceCode/FasalFlasher/Middlewares : Contains STM crypto library and FatFS library, used as is without any modifications
-6. @ref SourceCode/FasalFlasher/User_Files : All custom code for the Fasal Application is present in this folder
-    1. @ref SourceCode/FasalFlasher/User_Files/AppCommon : Contains modules used across the whole application, these include
-        1. @ref SourceCode/FasalFlasher/User_Files/AppCommon/AppIndication : Controls visual indication presented by the board
-        2. @ref SourceCode/FasalFlasher/User_Files/AppCommon/AppUtility : Provides SoftTimer, Circular Buffer and other Misc utility functions
-        3. @ref SourceCode/FasalFlasher/User_Files/AppCommon/CommonDefinitions : Non project specific data structures and Macros
-        4. SourceCode/FasalFlasher/User_Files/AppCommon/ConfigSetting : Module to check Board HW configuration
-        5. SourceCode/FasalFlasher/User_Files/AppCommon/PushButton : PushButton module
-    2. @ref SourceCode/FasalFlasher/User_Files/AppConfiguration : Application configuration options are controlled here
-    3. @ref SourceCode/FasalFlasher/User_Files/AppFasal : Application code module
-        1. @ref SourceCode/FasalFlasher/User_Files/AppFasal/AppHelper : Helper functions for main application
-        2. @ref SourceCode/FasalFlasher/User_Files/AppFasal/AppResetAndError : Error handling and reset management
-    4. @ref SourceCode/FasalFlasher/User_Files/AppInterface : Modules that help Interface Sensor Adapter with external peripherals
-        1. @ref SourceCode/FasalFlasher/User_Files/AppInterface/Console : Debug console for getting controlling as well as reading logs
-        2. @ref SourceCode/FasalFlasher/User_Files/AppInterface/xModem : xModem module built on top of UART based console module
-    5. @ref SourceCode/FasalFlasher/User_Files/AppInterrupts : Callbacks and other application specific callbacks coupled closely with board specific peripherals
-    6. @ref SourceCode/FasalFlasher/User_Files/AppStorage : OnBoard storage module API
-        1. @ref SourceCode/FasalFlasher/User_Files/AppStorage/AppFlashFS : Filesystem based on LittleFS file system built atop W25Qxx flash IC
-        2. @ref SourceCode/FasalFlasher/User_Files/AppStorage/AppSDFS : Filesystem based on FatFS file system built atop SPI based SD-Card
+## 🔍 What is FileFerry-Click2Flash?
 
-![Application](Docs/Design_Document/Assets/FasalFlasher-Application.png)
+In its simplest form, FileFerry-Click2Flash is a low-cost, portable hardware jig that allows you to flash any external SPI flash IC (like the W25Q64JVSSIQ). 🛠️
 
-```text
-+---BUILD_DEBUG
-+---BUILD_PROD
-+---Core
-¦   +---Inc
-¦   +---Src
-¦   +---Startup
-+---Drivers
-¦   +---CMSIS
-¦   ¦   +---Device
-¦   ¦   ¦   +---ST
-¦   ¦   ¦       +---STM32F1xx
-¦   ¦   ¦           +---Include
-¦   ¦   ¦           +---Source
-¦   ¦   ¦               +---Templates
-¦   ¦   +---Include
-¦   +---STM32F1xx_HAL_Driver
-¦       +---Inc
-¦       ¦   +---Legacy
-¦       +---Src
-+---FATFS
-¦   +---App
-¦   +---Target
-+---Middlewares
-¦   +---Third_Party
-¦       +---FatFs
-¦           +---src
-¦               +---option
-+---User_Files
-    +---AppCommon
-    ¦   +---AppIndication
-    ¦   ¦   +---TriColorLED
-    ¦   +---AppUtility
-    ¦   ¦   +---AppProfiler
-    ¦   ¦   +---SoftTimer
-    ¦   +---CommonDefinitions
-    ¦   +---ConfigSetting
-    ¦   +---PushButton
-    +---AppConfiguration
-    +---AppFasal
-    ¦   +---AppResetAndError
-    +---AppInterface
-    ¦   +---Console
-    ¦   +---xModem
-    +---AppInterrupts
-    +---AppStorage
-        +---AppFlashFS
-        ¦   +---LittleFS
-        ¦   +---W25Qxx
-        +---AppSDFS
+You can transfer data in one of two ways:
 
-```
+1. Store your file/data in the onboard micro SD card. 💾
+    1. Example: Production firmware images, common security tokens, certificates, etc.
+2. Transfer the files from an external computer over UART using the X-modem protocol. 🔄
+    1. Example: Device-specific unique keys, device-specific CA certificates, UUID tokens, etc.
 
-## Code-flow
+You can do all of this with just a click of the onboard button! 🎯
 
-1. The code flow and the corresponding modules are documented in this section
-2. The code starting point is @ref main. All HAL modules are initialized here along with Application level code housed in @ref AppFasal.h
-3. @ref AppFasal_Init Initializes the application, sends startup message and sets up the TriColorLED, console and startup timer
-4. The function @ref AppFasal_Run is the application state-machine that drives the application
-    1. Module level initialization is carried out in the first step
-    2. The application then waits for the user to press the flash user button
-    3. External flash is then initialized before progressing to the file transfer phase
-    4. Depending on the hardware slide switch setting, the device can then proceed in one of the following modes
-        1. SD-Card Transfer Mode:
-            1. SD-Card is initialized and it is ensured that the Golden image is present
-            2. Golden image is transferred from the SD card to the external flash
-            3. CRC of the same file in SD-Card and in the now transferred flash are computed and checked against each other
-        2. XModem Transfer Mode:
-            1. File Must be transferred over XModem 1K option though a serial terminal [Baud: 115200, Data: 8b, Stop Bit: 1b]
-    5. In either mode, On successful reception of Golden Image, the Firmware then enters the termination stage, indicates success and waits on the flash user button stage
-    6. In either mode failure of any of the steps prior to successful transfer results in the application state-machine indicating the failure reason and jumping back flash user button stage
+## 🚀 Why is "FileFerry-Click2Flash" Needed? 🛠️
 
-![APP](Docs/Design_Document/Assets/FasalFlasher_FlowChart.png)
+In today's fast-paced manufacturing environment, the need for efficient, reliable, and cost-effective tools is paramount. Traditional methods of programming SPI flash ICs, such as using J-link SPI programmers or bed-of-nails jigs, often involve expensive, bulky, and complex setups that are not easily adaptable to different production scenarios. 😓
 
-## Build-Instruction
+This is where FileFerry-Click2Flash comes in! 🎉 It addresses the gap between high-cost, inflexible tools and the need for a versatile, portable, and user-friendly solution. Whether you are flashing firmware or transferring security credentials, or unique device identifiers, FileFerry-Click2Flash offers an ultra-low-cost alternative that is not only easy to use but also highly customizable. The ability to transfer files via an onboard SD card or over UART using the X-modem protocol provides flexibility in various production environments, making it a robust and indispensable tool for manufacturers, developers, and technicians alike. ⚙️💻
 
-1. Built using CubeIDE Version: 1.15.1 Build: 21094_20240412_1041 (UTC)
-2. Both BUILD_DEBUG and BUILD_PROD Uses Linker script STM32f103RETX_FLASH.ld with flash offset of 0x0800 0000, application size set to 512KB
-3. The following build configurations are built into the codebase
-    1. *BUILD_DEBUG* : Debug build used during development with all debug symbols enabled
-        - Optimization level : None
-        - Symbols defined : DEBUG | STM32F103xE | USE_HAL_DRIVER
+With its customizable connector interface and portable design, this tool simplifies the flashing process, reducing both the time and costs associated with traditional methods. FileFerry-Click2Flash is the modern solution to the challenges faced in programming SPI flash ICs, ensuring that the process is as seamless and efficient as possible. 🖊️💡
 
-    2. *BUILD_PROD* : Production build for filed use
-        - Optimization level : Ofast
-        - Symbols defined : NDEBUG | STM32F103xE | USE_HAL_DRIVER
-4. @ref SourceCode/FasalFlasher/User_Files/AppCommon/AppConfiguration for changing compile time build features
+## 💰 Manufacturing Cost Breakdown
 
-## Docs
+We got 5 quantity PCBA samples from JLCPCB. (We are in no way affiliated with JLCPCB—it's just convenient to manufacture quick prototypes with them!) 🚀
 
-1. Open Index.html in any browser. Files located here @ref Docs/html
-2. Latex Generated PDF file is preset at @ref Docs/Design_Document/FasalNode_FirmwareDesignDocument.pdf
-3. The documentation can be generated by running batch script @ref make_designdocument.bat at the project root
+* Total cost with Shipping (PCB + PCBA): $132.49 📦
+* Landing cost with import duties, customs, etc.: INR 14,000.00 (for 5 pieces) 💸
+* Cost per board: INR 2,800.00 (includes 6 extra pogo pins, hand soldered later) 🛠️
+* At a cost of INR 2,800.00 (~ USD 33.00), we have a SPI flasher with additional functionalities like UART transfer.
+  
+🔄 Compare this with a J-Flash SPI programmer at ~ USD 330.00 or a Bed of nails test jig at ~ USD 500.00.
+🤔 Which would you choose?
 
-## Contact-Me
+## High Level Working
 
-- <vishal.murthy@wolkus.com> over E-Mail
-- [Vishal](wolkus.slack.com) on Slack
+Let's look at how this works.
+
+![High level block diagram](/Assets/images/block_diagram.png)
+The "FileFerry-Click2Flash" system block diagram.
+
+![PCB Description](/Assets/images/pcb_description.png)
+The "FileFerry-Click2Flash" PCB points
+
+### There are two ways (currently supported) to transfer files to the target SPI Flash
+
+### 1. Using the onboard micro SD card (Files need to be on the SD card)
+
+  1. Simple copy the file you want to transfer to the external SPI Flash into the SD card (Example a production binary)
+  2. Modify the given source code to use the file name and build the code
+  3. Flash the code to the "FileFerry-Click2Flash" board
+  4. Insert the SD Card, power up the board and click the "Flash" button for the flashing to take place
+  5. you can monitor the progress on the RGB LED as well as debug logs on the USB-UART
+
+### 2. Using a PC client over USB (you will need a Software client to initiate transfer)
+
+  1. No re-programming needed.
+  2. Slide the "Mode Switch" S302 to "Mode 1". This will activate UART X-Modem transfer. (Current firmware supports X-modem. Can be modified to any thing else).
+  3. Open a terminal program of your choice. The terminal program has to support "File Transfer" functionality.
+  4. We use TeraTerm. So open TeraTerm.
+  5. Connect to the proper COM port. Use BAud as 115200,8N1.
+  ![Teraterm Window](/Assets/images/teraterm_1_port.png)
+  Teraterm Open
+
+  6. Go to File-> Transfer -> XMODEM -> Send -> [Check Option 1K] + Select file.
+  ![Teraterm file selection](/Assets/images/teraterm_2_xmodem.png)
+  Transfer setting
+
+  7. Select your file and click "Open".
+  ![Teraterm file selection](/Assets/images/teraterm_3_file-select.png)
+  File Selection
+
+  8. The file transfer will start.
+  ![Teraterm file selection](/Assets/images/teraterm_4_transfer.png)
+  File Transfer
+
+
+## What type of Files can I transfer?
+The sky is the limit really. Some common examples are:
+
+1. Transferring the production "Golden Image" of the product where the end product's bootloader performs a DFU from the binaries available in the Flash IC. (You can extend this for implementing OTA).
+2. Transferring unique device CA certificates from a PC based on the device serial number. (Scan barcode, generate unique CA certificate in the PC application, transfer it to the device over USB UART).
+3. Transferring audio files, JSON configuration files, etc.
+
+
+## Can I modify the hardware?
+
+You have the design files with you. You can do anything! If you are a student or a DIY'er, here are some ideas to use the hardware:
+
+1. Use as a STM32F103 development kit
+2. Use it as a data-logger. Examples:
+   * Connect an I2C sensor (there is a QWIIC port for easy connection. There is also a JST port with controlled power) and modify the STM32 code to read from the sensor and store it in the onboard SD card.
+   * You can connect a SPI sensor as well.
+3. Use the additional UART2 port to connect a GPS receiver and modify the STM32 code to receive the GPS NMEA strings, parse it and store it in the onboard SD card.
+4. RFID access control anyone? Interface a RFID reader over UART/I2C/SPI (RC522 or PN532 or similar), have a master list of RFID numbers stored in the SD card. Connect a relay to a free GPIO and give access control to the room.
+
+Limitless possibilities!
+
+
+## 📜 License Information
+The hardware and firmware are released under the MIT License. 📝 The code is beerware; if you see me (or any other Fasal employee) at the local, and you've found our code helpful, please buy us a round! 🍻
+
+Distributed as-is; no warranty is given. ⚠️ Read the License file for complete licensing information.
