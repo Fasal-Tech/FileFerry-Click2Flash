@@ -4,7 +4,7 @@ This repository contains Fasal Flasher Source Code. Dive right into the codebase
 
 ## Table of contents
 
-- [Context](#Context)
+- [Context](#context)
 - [Project-structure](#project-structure)
 - [Code-flow](#code-flow)
 - [Build-Instruction](#build-instruction)
@@ -153,5 +153,5 @@ The device has the following salient features
 
 ## Contact-Me
 
-- <vishal.murthy@wolkus.com> over E-Mail
-- [Vishal](wolkus.slack.com) on Slack
+- <vishalbhatta@gmail.com> over E-Mail
+- [LinkedIn](https://in.linkedin.com/in/vishal-keshava-murthy-8a2ba1a7)
